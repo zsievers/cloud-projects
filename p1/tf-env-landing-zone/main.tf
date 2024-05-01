@@ -1,5 +1,7 @@
 module "storage_account" {
-  source = "../tf-mod-azurerm-storage-account"
+  source = "../modules/tf-mod-azurerm-storage-account"
+  location = var.location
+  sa-name = azurerm_storage_account.main.name
 }
 
 resource "azurerm_resource_group" "main" {

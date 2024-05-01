@@ -1,22 +1,14 @@
-variable "location" {
+variable application_name {
   type = string
+  description = "name of application"
+  default = "app1"
 }
 
-variable "rg-name" {
+variable environment {
   type = string
-  description = "resource group name"
-  default = ""
+  description = "name of environment"
+  default = "dev"
 }
-variable "sa-name" {
-  type = string
-  description = "storage account name"
-}
-
-variable "environment" {
-  type = string
-  default = "Dev"
-}
-
 variable "account-tier" {
   type    = string
   default = "Standard"
