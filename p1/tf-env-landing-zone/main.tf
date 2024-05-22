@@ -1,5 +1,8 @@
 module "storage_account" {
-  source = "../modules/tf-mod-azurerm-storage-account"
+  source   = "../modules/tf-mod-azurerm-storage-account"
+  location = var.location
+  sa-name  = "sa${var.application_name}${var.environment_name}${random_string.main.result}"
+  rg-name  = azurerm_resource_group.main.name
 }
 
 resource "azurerm_resource_group" "main" {
@@ -7,9 +10,9 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
-module "kv" {
-  source = "../modules/tf-mod-azurerm-key-vault"
-  location            = azurerm_resource_group.main.location 
+resource "random_string" "main" {
+  length  = 8
+  upper   = false
+  special = false
 }
 
-data azurerm_client_config current {}
