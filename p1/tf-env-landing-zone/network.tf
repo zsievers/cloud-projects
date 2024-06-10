@@ -40,7 +40,7 @@ resource "azurerm_network_security_rule" "rule1" {
   destination_address_prefix = "*"
 }
 
-resource "azurerm_subnet_network_security_group_association" "default_rule1" {
+resource "azurerm_subnet_network_security_group_association" "default_nsg" {
   subnet_id                 = azurerm_subnet.default.id
   network_security_group_id = azurerm_network_security_group.default.id
 }
